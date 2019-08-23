@@ -1,5 +1,5 @@
 from __future__ import division
-
+import time
 import re
 import sys
 import os
@@ -10,7 +10,7 @@ from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
 import pyaudio
-import subprocess
+
 
 from six.moves import queue
 from vision import detect_text
@@ -29,9 +29,13 @@ def camera():
 
         # Display the resulting frame
         cv2.imshow('Lisa View', frame)
-        key = cv2.waitKey(1) & 0xFF
-        if key == ord('q'):
+
+        global stop_threads
+
+        cv2.waitKey(1)
+        if stop_threads:
             break
+
 
     # When everything done, release the capture
     cap.release()
@@ -101,22 +105,7 @@ class MicrophoneStream(object):
 
             yield b''.join(data)
 
-
 def listen_print_loop(responses):
-    """Iterates through server responses and prints them.
-
-    The responses passed is a generator that will block until a response
-    is provided by the server.
-
-    Each response may contain multiple results, and each result may contain
-    multiple alternatives; for details, see https://goo.gl/tjCPAU.  Here we
-    print only the transcription for the top alternative of the top result.
-
-    In this case, responses are provided for interim results as well. If the
-    response is an interim one, print a line feed at the end of it, to allow
-    the next result to overwrite it, until the response is a final one. For the
-    final one, print a newline to preserve the finalized transcription.
-    """
     num_chars_printed = 0
     for response in responses:
         if not response.results:
@@ -157,19 +146,45 @@ def listen_print_loop(responses):
 
             num_chars_printed = 0
 
-
-
 def lisa_command(text):
-
-    if text.lower() in ' can you read this ':
+    if text.lower() in ' hi lisa ':
+        read_text("Hi, how can I help you ?")
+    elif text.lower() in ' can you read this ':
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         read_text(detect_text("test1.jpg"))
+        # localize_objects('test1.jpg')
     elif text.lower() in ' go to sleep ':
         # When everything done, release the capture
-        cap.release()
-        cv2.destroyAllWindows()
+        global stop_threads
+        global t1
+        stop_threads = True
+        t1.join()
+        print('Lisa goes to sleep zzzz')
         sys.exit(0)
+
+def localize_objects(path):
+    """Localize objects in the local image.
+
+    Args:
+    path: The path to the local file.
+    """
+    from google.cloud import vision
+    client = vision.ImageAnnotatorClient()
+
+    with open(path, 'rb') as image_file:
+        content = image_file.read()
+    image = vision.types.Image(content=content)
+
+    objects = client.object_localization(
+        image=image).localized_object_annotations
+
+    print('Number of objects found: {}'.format(len(objects)))
+    for object_ in objects:
+        print('\n{} (confidence: {})'.format(object_.name, object_.score))
+        print('Normalized bounding polygon vertices: ')
+        for vertex in object_.bounding_poly.normalized_vertices:
+            print(' - ({}, {})'.format(vertex.x, vertex.y))
 
 
 def stream_audio():
@@ -196,10 +211,11 @@ def stream_audio():
         # Now, put the transcription responses to use.
         listen_print_loop(responses)
 
-
-
 from threading import Thread
 
 if __name__ == '__main__':
-    Thread(target = camera).start()
-    Thread(target = stream_audio).start()
+    stop_threads = False
+    t1 = Thread(target=camera)
+    t1.start()
+    t2 = Thread(target=stream_audio)
+    t2.start()

@@ -1,18 +1,24 @@
 from pygame import mixer
 import os
+#from gtts import gTTS
+
 import subprocess
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
-
 def play_audio(file):
+    #os.rename(save_name, play_name)
     mixer.init()
     mixer.music.load(file)
     mixer.music.play()
+    while (mixer.music.get_busy()):
+        continue
+    #sleep(2)
+    mixer.music.load("holder.mp3")
+    os.remove("output.mp3")
 
 def read_text(text):
     from google.cloud import texttospeech
-
     # Instantiates a client
     client = texttospeech.TextToSpeechClient()
 
@@ -34,9 +40,18 @@ def read_text(text):
     response = client.synthesize_speech(synthesis_input, voice, audio_config)
 
     # The response's audio_content is binary.
-    with open('output.mp3', 'wb') as out:
-        # Write the response to the output file.
-        out.write(response.audio_content)
-        print('Reading Text')
+    # text = gTTS(text=x, lang='en')
+    # with open(play_name, 'wb') as out:
+    #     # Write the response to the output file.
+    #     print('Reading Text')
+    #     out.write(response.audio_content)
+    #     print('Rewrite mp3 name...')
+    #     os.rename(save_name, play_name)
 
-    play_audio('output.mp3')
+    # out = gTTS(text=response.audio_content, lang='en')
+    with open("output.mp3", 'wb') as out:
+        # Write the response to the output file.
+        print('Reading Text')
+        out.write(response.audio_content)
+
+    play_audio("output.mp3")
