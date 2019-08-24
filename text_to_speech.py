@@ -1,19 +1,17 @@
 from pygame import mixer
 import os
-#from gtts import gTTS
 
-import subprocess
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 def play_audio(file):
-    #os.rename(save_name, play_name)
     mixer.init()
     mixer.music.load(file)
     mixer.music.play()
+
     while (mixer.music.get_busy()):
         continue
-    #sleep(2)
+
     mixer.music.load("holder.mp3")
     os.remove("output.mp3")
 

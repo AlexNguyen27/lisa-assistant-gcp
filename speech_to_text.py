@@ -1,5 +1,5 @@
 from __future__ import division
-import time
+
 import re
 import sys
 import os
@@ -10,8 +10,7 @@ from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
 import pyaudio
-
-
+from threading import Thread
 from six.moves import queue
 from vision import detect_text
 from text_to_speech import read_text
@@ -35,7 +34,6 @@ def camera():
         cv2.waitKey(1)
         if stop_threads:
             break
-
 
     # When everything done, release the capture
     cap.release()
@@ -136,7 +134,14 @@ def listen_print_loop(responses):
 
         else:
             print(transcript + overwrite_chars)
-            lisa_command(transcript + overwrite_chars)
+            text = (transcript + overwrite_chars).lower().strip()
+
+            if (text == 'hello lisa') or (text == 'hey lisa') or (text == 'hi lisa') or (text == 'lisa'):
+                global call_lisa
+                call_lisa = True
+                read_text("Hi, how can I help you ?")
+            elif call_lisa:
+                lisa_command(text)
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
@@ -146,23 +151,29 @@ def listen_print_loop(responses):
 
             num_chars_printed = 0
 
+# Check if Lía is called
+call_lisa = False
+
+# Lisa command
 def lisa_command(text):
-    if text.lower() in ' hi lisa ':
-        read_text("Hi, how can I help you ?")
-    elif text.lower() in ' can you read this ':
+    if text in 'can you read this':
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         read_text(detect_text("test1.jpg"))
-        # localize_objects('test1.jpg')
-    elif text.lower() in ' go to sleep ':
+    elif text in 'what do you see':
+        ret, frame = cap.read()
+        cv2.imwrite("test1.jpg", frame)
+        localize_objects('test1.jpg')
+    elif (text in 'thank you') or (text in 'go to sleep'):
         # When everything done, release the capture
         global stop_threads
         global t1
         stop_threads = True
         t1.join()
-        print('Lisa goes to sleep zzzz')
+        print('Lisa goes to sleep Zzz...')
         sys.exit(0)
 
+# Object detection
 def localize_objects(path):
     """Localize objects in the local image.
 
@@ -182,11 +193,14 @@ def localize_objects(path):
     print('Number of objects found: {}'.format(len(objects)))
     for object_ in objects:
         print('\n{} (confidence: {})'.format(object_.name, object_.score))
-        print('Normalized bounding polygon vertices: ')
-        for vertex in object_.bounding_poly.normalized_vertices:
-            print(' - ({}, {})'.format(vertex.x, vertex.y))
 
+        if object_.score >= 0.5:
+            read_text(object_.name)
+            # print('Normalized bounding polygon vertices: ')
+            # for vertex in object_.bounding_poly.normalized_vertices:
+            #     print(' - ({}, {})'.format(vertex.x, vertex.y))
 
+# Stream audio
 def stream_audio():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
@@ -211,8 +225,7 @@ def stream_audio():
         # Now, put the transcription responses to use.
         listen_print_loop(responses)
 
-from threading import Thread
-
+# Main function
 if __name__ == '__main__':
     stop_threads = False
     t1 = Thread(target=camera)
