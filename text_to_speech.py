@@ -4,8 +4,11 @@ import os
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
+
+# Audio for text
 def play_audio(file):
-    mixer.init()
+    global mixer
+    # mixer.init()
     mixer.music.load(file)
     mixer.music.play()
 
@@ -14,6 +17,14 @@ def play_audio(file):
 
     mixer.music.load("holder.mp3")
     os.remove("output.mp3")
+
+
+# for song
+def play_song(file):
+    global mixer
+    mixer.music.load(file)
+    mixer.music.play()
+
 
 def read_text(text):
     from google.cloud import texttospeech
