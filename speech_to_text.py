@@ -1,5 +1,4 @@
 from __future__ import division
-import webbrowser
 import re
 import sys
 import os
@@ -18,6 +17,7 @@ from threading import Thread
 from six.moves import queue
 from vision import detect_text
 from text_to_speech import read_text
+from text_to_speech import play_song
 from web_parsing import web_parsing
 import cv2
 
@@ -163,18 +163,11 @@ def listen_print_loop(responses):
 
 # Check if Lía is called
 call_lisa = False
-# searchInfo = False
 
 
 # Lisa command
 def lisa_command(text):
-    # kiem tra search moi vao bai hat
-    # if text == 'search for':
-    #     global searchInfo
-    #     searchInfo = True
-    # elif searchInfo:
-    #     openUrl(text)
-    # kiểm tra ngôn ngữ tự nhiên
+    global mixer
     if 'can you read this' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
@@ -189,28 +182,19 @@ def lisa_command(text):
         global t1
         stop_threads = True
         t1.join()
-        mixer.music.stop()
         print('Lisa goes to sleep Zzz...')
         sys.exit(0)
-    # text = " fireflies"
     elif 'play the song' in text:
         # Thread to stop the web parsing when say "go to sleep"
         Thread(target=web_parsing, args=[text.replace("play the song", "")]).start()
+    elif 'play again' in text:
+        for topdir, dirs, files in os.walk("musics"):
+            play_song('./musics/' + files[len(files) - 1])
+    elif 'stop' in text:
+        mixer.music.stop()
 
 
-# ham search theo bai hat
-def openUrl(text):
-    url = "nhaccuatui.com/tim-kiem?q="
-    array = ""
-    text = text.split()  # tách thành mảng tên bài hát
-    for item in text:
-        array += "+" + item  # đuôi bài hát
-    array = array[1:]
-    print(url)
-    v = url + array
-    print(v)
-    chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-    webbrowser.get(chrome_path).open(v)
+# lisa_command('play again')
 
 
 # Object detection

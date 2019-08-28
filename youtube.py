@@ -1,7 +1,7 @@
 import youtube_dl
 
 ydl_opts = {
-    'outtmpl': 'musics/%(title)s-%(id)s.%(ext)s',
+    'outtmpl': 'musics/song.%(ext)s',
     'format': 'bestaudio/best',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',

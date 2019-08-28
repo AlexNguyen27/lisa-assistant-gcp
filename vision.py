@@ -1,5 +1,5 @@
-
 import os
+
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
@@ -18,11 +18,8 @@ def detect_text(path):
     response = client.text_detection(image=image)
     texts = response.text_annotations
     print('Detected Texts:')
-    #print(texts[0].description.replace("\n", " "))
+    # print(texts[0].description.replace("\n", " "))
 
     if (len(texts)):
         return texts[0].description.replace("\n", " ")
     return ""
-
-
-

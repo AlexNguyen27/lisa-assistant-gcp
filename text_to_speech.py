@@ -1,4 +1,4 @@
-from pygame import mixer
+from pygame import time
 import os
 
 credential_path = 'apikey.json'
@@ -7,8 +7,9 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 # Audio for text
 def play_audio(file):
-    global mixer
-    # mixer.init()
+    from pygame import mixer
+    mixer.init()
+
     mixer.music.load(file)
     mixer.music.play()
 
@@ -21,10 +22,18 @@ def play_audio(file):
 
 # for song
 def play_song(file):
-    global mixer
+    from pygame import mixer
+    mixer.init()
+
+    while mixer.music.get_busy():
+        time.Clock().tick(10)
+
+    # mixer.init()
     mixer.music.load(file)
     mixer.music.play()
 
+
+# play_song("./musics/Owl City - Fireflies-psuRGfAaju4.mp3")
 
 def read_text(text):
     from google.cloud import texttospeech
