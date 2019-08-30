@@ -19,6 +19,8 @@ from vision import detect_text
 from text_to_speech import read_text
 from text_to_speech import play_song
 from web_parsing import web_parsing
+from search_wikipedia import search_wikipedia
+from weather import weather
 import cv2
 
 cap = cv2.VideoCapture(0)
@@ -177,6 +179,8 @@ def lisa_command(text):
         cv2.imwrite("test1.jpg", frame)
         localize_objects('test1.jpg')
     elif 'go to sleep' in text:
+        if (mixer.music.get_busy):
+            mixer.music.stop()
         # When everything done, release the capture
         global stop_threads
         global t1
@@ -185,6 +189,8 @@ def lisa_command(text):
         print('Lisa goes to sleep Zzz...')
         sys.exit(0)
     elif 'play the song' in text:
+        if (mixer.music.get_busy):
+            mixer.music.stop()
         # Thread to stop the web parsing when say "go to sleep"
         Thread(target=web_parsing, args=[text.replace("play the song", "")]).start()
     elif 'play again' in text:
@@ -192,9 +198,14 @@ def lisa_command(text):
             play_song('./musics/' + files[len(files) - 1])
     elif 'stop' in text:
         mixer.music.stop()
-
-
-# lisa_command('play again')
+    elif 'search for' in text:
+        if (mixer.music.get_busy):
+            mixer.music.stop()
+        Thread(target=search_wikipedia, args=[text.replace('search for ', '')]).start()
+    elif 'what is the weather today' in text:
+        if (mixer.music.get_busy):
+            mixer.music.stop()
+        Thread(target=weather).start()
 
 
 # Object detection
