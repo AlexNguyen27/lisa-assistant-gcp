@@ -36,6 +36,9 @@ def camera():
         ret, frame = cap.read()
 
         # Display the resulting frame
+        #cv2.imshow('Lisa View', frame)
+        cv2.namedWindow('Lisa View', cv2.WINDOW_NORMAL)
+        cv2.setWindowProperty('Lisa View', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
         cv2.imshow('Lisa View', frame)
 
         global stop_threads
@@ -48,7 +51,7 @@ def camera():
     cap.release()
     cv2.destroyAllWindows()
 
-
+# speech to text
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
 
@@ -111,10 +114,9 @@ class MicrophoneStream(object):
                     data.append(chunk)
                 except queue.Empty:
                     break
-
             yield b''.join(data)
 
-
+# speech to text
 def listen_print_loop(responses):
     num_chars_printed = 0
     for response in responses:
@@ -148,7 +150,7 @@ def listen_print_loop(responses):
             print(transcript + overwrite_chars)
             text = (transcript + overwrite_chars).lower().strip()
             global call_lisa
-            if (text == 'hello') or (text == 'hey lisa') or (text == 'hi lisa') or (text == 'lisa'):
+            if (text == 'hey lisa') or (text == 'hi lisa') or (text == 'lisa'):
                 call_lisa = True
                 read_text("Hi, how can I help you ?")
             elif call_lisa:
@@ -174,7 +176,7 @@ def lisa_command(text):
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         read_text(detect_text("test1.jpg"))
-    elif 'what do you see' in text:
+    elif 'what is in front of me' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         localize_objects('test1.jpg')
@@ -192,8 +194,11 @@ def lisa_command(text):
         if (mixer.music.get_busy):
             mixer.music.stop()
         # Thread to stop the web parsing when say "go to sleep"
-        Thread(target=web_parsing, args=[text.replace("play the song", "")]).start()
+        # Thread(target=web_parsing, args=[text.replace("play the song", "")]).start()
+        Thread(target=web_parsing, args=[text.rpartition('play the song')[2]]).start()
     elif 'play again' in text:
+        if (mixer.music.get_busy):
+            mixer.music.stop()
         for topdir, dirs, files in os.walk("musics"):
             play_song('./musics/' + files[len(files) - 1])
     elif 'stop' in text:
@@ -201,7 +206,7 @@ def lisa_command(text):
     elif 'search for' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
-        Thread(target=search_wikipedia, args=[text.replace('search for ', '')]).start()
+        Thread(target=search_wikipedia, args=[text.rpartition('search for')[2]]).start()
     elif 'what is the weather today' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
@@ -228,18 +233,18 @@ def localize_objects(path):
     for object_ in objects:
         print('\n{} (confidence: {})'.format(object_.name, object_.score))
 
-        if object_.score >= 0.5:
+        if object_.score >= 0.7:
             read_text(object_.name)
             # print('Normalized bounding polygon vertices: ')
             # for vertex in object_.bounding_poly.normalized_vertices:
             #     print(' - ({}, {})'.format(vertex.x, vertex.y))
 
 
-# Stream audio
+# Stream audio # speech to text
 def stream_audio():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
-    language_code = 'en-US'  # a BCP-47 language tag
+    language_code = 'en-US'  # a BCP-47 language tag #
 
     client = speech.SpeechClient()
     config = types.RecognitionConfig(

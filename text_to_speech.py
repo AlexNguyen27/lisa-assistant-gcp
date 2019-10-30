@@ -5,7 +5,7 @@ credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 
-# Audio for text
+# Audio for text+
 def play_audio(file):
     from pygame import mixer
     mixer.init()
