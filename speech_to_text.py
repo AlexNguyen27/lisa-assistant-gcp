@@ -17,6 +17,7 @@ from threading import Thread
 from six.moves import queue
 from vision import detect_text
 from text_to_speech import read_text
+from text_to_speech import play_sound
 from text_to_speech import play_song
 from web_parsing import web_parsing
 from search_wikipedia import search_wikipedia
@@ -150,9 +151,9 @@ def listen_print_loop(responses):
             print(transcript + overwrite_chars)
             text = (transcript + overwrite_chars).lower().strip()
             global call_lisa
-            if (text == 'hey lisa') or (text == 'hi lisa') or (text == 'lisa'):
+            if (text == 'hey lisa') or (text == 'hi lisa') or (text == 'hi') or (text == 'xin chào'):
                 call_lisa = True
-                read_text("Hi, how can I help you ?")
+                read_text("Chủ nhân ơi, cần tôi giúp gì không?")
             elif call_lisa:
                 lisa_command(text)
 
@@ -172,11 +173,11 @@ call_lisa = False
 # Lisa command
 def lisa_command(text):
     global mixer
-    if 'can you read this' in text:
+    if 'Cho tôi nhìn đoạn văn bản cần nói' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         read_text(detect_text("test1.jpg"))
-    elif 'what is in front of me' in text:
+    elif 'ok' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         localize_objects('test1.jpg')
@@ -190,7 +191,7 @@ def lisa_command(text):
         t1.join()
         print('Lisa goes to sleep Zzz...')
         sys.exit(0)
-    elif 'play the song' in text:
+    elif 'mở nhạc' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
         # Thread to stop the web parsing when say "go to sleep"
@@ -200,7 +201,7 @@ def lisa_command(text):
         if (mixer.music.get_busy):
             mixer.music.stop()
         for topdir, dirs, files in os.walk("musics"):
-            play_song('./musics/' + files[len(files) - 1])
+            play_sound('./musics/' + files[len(files) - 1])
     elif 'stop' in text:
         mixer.music.stop()
     elif 'search for' in text:
@@ -244,7 +245,7 @@ def localize_objects(path):
 def stream_audio():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
-    language_code = 'en-US'  # a BCP-47 language tag #
+    language_code = 'vi-VN'  # a BCP-47 language tag #
 
     client = speech.SpeechClient()
     config = types.RecognitionConfig(

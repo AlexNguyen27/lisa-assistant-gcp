@@ -1,6 +1,7 @@
 from pygame import time
 import os
 
+from playsound import playsound
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
@@ -32,6 +33,11 @@ def play_song(file):
     mixer.music.load(file)
     mixer.music.play()
 
+def play_sound(file):
+    try:
+        playsound(file);
+    except Exception as e:
+        print(e)
 
 # play_song("./musics/Owl City - Fireflies-psuRGfAaju4.mp3")
 
@@ -46,7 +52,7 @@ def read_text(text):
     # Build the voice request, select the language code ("en-US") and the ssml
     # voice gender ("neutral")
     voice = texttospeech.types.VoiceSelectionParams(
-        language_code='en-US',
+        language_code='vi-VN',
         ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE)
 
     # Select the type of audio file you want returned

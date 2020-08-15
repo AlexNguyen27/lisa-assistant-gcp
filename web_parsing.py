@@ -1,11 +1,14 @@
 from urllib.parse import quote
 from urllib.request import urlopen
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 from youtube import get_youtube_manager
 from threading import Thread
 from text_to_speech import play_song
+from text_to_speech import play_sound
 from text_to_speech import read_text
-
+from pytube import YouTube
+import time
+from requests_html import HTMLSession
 
 # Read 3 first top song, cuz download take long time
 def message(videos):
@@ -15,22 +18,28 @@ def message(videos):
         if (index == 3): break
     return msg
 
-
 def web_parsing(textToSearch):
-    query = quote(textToSearch)
-    url = "https://www.youtube.com/results?search_query=" + query
-    response = urlopen(url)
-    html = response.read()
-    soup = BeautifulSoup(html, 'html.parser')
-    read_text("Searching for " + textToSearch)
-    videos = soup.findAll(attrs={'class': 'yt-uix-tile-link'})
-    if len(videos):
-        video = videos[0]
-        print('https://www.youtube.com' + video['href'])
-        ydl = get_youtube_manager()
-        Thread(target=read_text, args=[message(videos)]).start()
-        ydl.download(['https://www.youtube.com' + video['href']])
-        play_song('./musics/song.mp3')
+    print('a')
+    try:
+        query = quote(textToSearch)
+        session = HTMLSession()
+        url = "https://www.youtube.com/results?search_query=" + query
+        response = session.get(url)
+        response.html.render(sleep=1)
+        soup = bs(response.html.html, 'html.parser')
+        read_text("Searching for " + textToSearch)
+        tempYoutube = "https://www.youtube.com"
+        linkHref = soup.find(id="video-title").get('href')
+        print(len(linkHref))
+        if len(linkHref)>0:
+            youtubeHref = tempYoutube + linkHref;
+            ydl = get_youtube_manager()
+            Thread(target=web_parsing, args=[youtubeHref]).start()
+            ydl.download([youtubeHref])
+            play_sound('./musics/song.mp3')
+
+    except Exception as e:
+        print(e)
 
 # web_parsing("Solo")
 # play_song("./musics/Owl City - Fireflies-psuRGfAaju4.mp3")
