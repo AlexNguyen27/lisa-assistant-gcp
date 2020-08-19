@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bb36040-2250-4080-b7f4-2f5c3ae0fc85" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/musics/song.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/speech_to_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/speech_to_text.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/text_to_speech.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_to_speech.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web_parsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_parsing.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,8 +173,8 @@
       <list>
         <item itemvalue="Python.speech_to_text" />
         <item itemvalue="Python.web_parsing" />
-        <item itemvalue="Python.text_to_speech" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.text_to_speech" />
         <item itemvalue="Python.test3" />
       </list>
     </recent_temporary>
@@ -208,6 +206,14 @@
       <workItem from="1597459136841" duration="4247000" />
       <workItem from="1597463527351" duration="8796000" />
       <workItem from="1597475950362" duration="168000" />
+      <workItem from="1597546417794" duration="9805000" />
+      <workItem from="1597648551027" duration="5693000" />
+      <workItem from="1597661264037" duration="1650000" />
+      <workItem from="1597721534120" duration="2965000" />
+      <workItem from="1597732285750" duration="7513000" />
+      <workItem from="1597748926428" duration="2110000" />
+      <workItem from="1597756273338" duration="11004000" />
+      <workItem from="1597798035895" duration="13974000" />
     </task>
     <servers />
   </component>
@@ -219,56 +225,82 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1597240969969" />
-    <state x="522" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597374348149">
+    <state x="522" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597812615859">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="522" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1597374348149" />
+    <state x="522" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1597812615859" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597475794239">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1597475794239" />
+    <state x="611" y="302" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1597808752949">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="611" y="302" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1536.824@0.0.1536.824" timestamp="1597808752949" />
     <state x="548" y="166" key="FileChooserDialogImpl" timestamp="1597247468738">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597247468738" />
-    <state width="1253" height="213" key="GridCell.Tab.0.bottom" timestamp="1597476123862">
+    <state width="1493" height="287" key="GridCell.Tab.0.bottom" timestamp="1597818074832">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1253" height="213" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597476123862" />
-    <state width="1253" height="213" key="GridCell.Tab.0.center" timestamp="1597476123862">
+    <state width="1493" height="287" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597818074832" />
+    <state width="1493" height="287" key="GridCell.Tab.0.center" timestamp="1597818074832">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1253" height="213" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597476123862" />
-    <state width="1253" height="213" key="GridCell.Tab.0.left" timestamp="1597476123862">
+    <state width="1493" height="287" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597818074832" />
+    <state width="1493" height="287" key="GridCell.Tab.0.left" timestamp="1597818074831">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1253" height="213" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597476123862" />
-    <state width="1253" height="213" key="GridCell.Tab.0.right" timestamp="1597476123862">
+    <state width="1493" height="287" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597818074831" />
+    <state width="1493" height="287" key="GridCell.Tab.0.right" timestamp="1597818074832">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1253" height="213" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597476123862" />
-    <state width="746" height="261" key="GridCell.Tab.1.bottom" timestamp="1597475887502">
+    <state width="1493" height="287" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597818074832" />
+    <state width="1493" height="253" key="GridCell.Tab.1.bottom" timestamp="1597812496754">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="746" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597475887502" />
-    <state width="746" height="261" key="GridCell.Tab.1.center" timestamp="1597475887502">
+    <state width="1493" height="253" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597812496754" />
+    <state width="1493" height="253" key="GridCell.Tab.1.center" timestamp="1597812496754">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="746" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597475887502" />
-    <state width="746" height="261" key="GridCell.Tab.1.left" timestamp="1597475887502">
+    <state width="1493" height="253" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597812496754" />
+    <state width="1493" height="253" key="GridCell.Tab.1.left" timestamp="1597812496754">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="746" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597475887502" />
-    <state width="746" height="261" key="GridCell.Tab.1.right" timestamp="1597475887502">
+    <state width="1493" height="253" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597812496754" />
+    <state width="1493" height="253" key="GridCell.Tab.1.right" timestamp="1597812496754">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="746" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597475887502" />
-    <state x="152" y="114" key="SettingsEditor" timestamp="1597475747882">
+    <state width="1493" height="253" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597812496754" />
+    <state x="152" y="114" key="SettingsEditor" timestamp="1597815185028">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="152" y="114" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597475747882" />
+    <state x="152" y="114" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597815185028" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/speech_to_text.py</url>
+          <line>199</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test.py</url>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://F:/Python/Lib/site-packages/youtube_dl/YoutubeDL.py</url>
+          <line>2006</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$web_parsing.coverage" NAME="web_parsing Coverage Results" MODIFIED="1597815346623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$speech_to_text.coverage" NAME="speech_to_text Coverage Results" MODIFIED="1597818074821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$text_to_speech.coverage" NAME="text_to_speech Coverage Results" MODIFIED="1597475025542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$web_parsing.coverage" NAME="web_parsing Coverage Results" MODIFIED="1597475190266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$search_wikipedia.coverage" NAME="search_wikipedia Coverage Results" MODIFIED="1597241169569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -277,5 +309,6 @@
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$speech_to_text.coverage" NAME="speech_to_text Coverage Results" MODIFIED="1597475980963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1597381673358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$weather.coverage" NAME="weather Coverage Results" MODIFIED="1597372989474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$test.coverage" NAME="test Coverage Results" MODIFIED="1597803850490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
