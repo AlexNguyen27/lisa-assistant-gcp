@@ -1,5 +1,6 @@
 import requests
 from text_to_speech import read_text
+from translation import translate_language
 
 # Searching for weather
 def weather():
@@ -10,10 +11,13 @@ def weather():
     res.text.encode('utf8')
 
     data = res.json()
-    temp = data['main']['temp']
+    temp = round(data['main']['temp'] / 10)
+    print(data['main'])
     description = data['weather'][0]['description']
-    name = data['name']
+    # name = data['name']3
     humidity = data['main']['humidity']
-    read_text('Today in ' + name.replace("Thanh pho", "") + "city" + ', Temperature is: {} degree celcius'.format(
-        temp) + ', Humidity : {}'.format(humidity) + ', Mostly: {}'.format(description))
+    # todo: need a translate
+    read_text('Hôm nay, tại thành phố Hồ Chí Minh, Nhiệt độ là: {} độ C'.format(
+        temp) + ', Độ ẩm : {}'.format(humidity) + ' phần trăm, Thời tiết chủ yếu: {}'.format(translate_language(description)))
 
+# weather();

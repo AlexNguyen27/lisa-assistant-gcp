@@ -1,4 +1,5 @@
 import os
+# from translation import translate_language
 
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
@@ -20,6 +21,7 @@ def detect_text(path):
     print('Detected Texts:')
     # print(texts[0].description.replace("\n", " "))
 
+    # print(translate_language(texts[0].description.replace("\n", " ")))
     if (len(texts)):
         return texts[0].description.replace("\n", " ")
     return ""

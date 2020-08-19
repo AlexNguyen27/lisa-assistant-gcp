@@ -17,11 +17,13 @@ from threading import Thread
 from six.moves import queue
 from vision import detect_text
 from text_to_speech import read_text
+from text_to_speech import play_sound
 from text_to_speech import play_song
 from web_parsing import web_parsing
 from search_wikipedia import search_wikipedia
 from weather import weather
 import cv2
+from translation import translate_language
 
 cap = cv2.VideoCapture(0)
 
@@ -150,9 +152,14 @@ def listen_print_loop(responses):
             print(transcript + overwrite_chars)
             text = (transcript + overwrite_chars).lower().strip()
             global call_lisa
-            if (text == 'hey lisa') or (text == 'hi lisa') or (text == 'lisa'):
+            if (text == 'hey lisa') or (text == 'hi lisa') \
+                    or (text == 'lily') \
+                    or (text == 'lyly') \
+                    or ('ly' in text) \
+                    or (text == 'ly ly') \
+                    or (text == 'xin chào lily'):
                 call_lisa = True
-                read_text("Hi, how can I help you ?")
+                read_text('Xin chào, Bạn cần tôi giúp gì vậy?');
             elif call_lisa:
                 lisa_command(text)
 
@@ -172,15 +179,16 @@ call_lisa = False
 # Lisa command
 def lisa_command(text):
     global mixer
-    if 'can you read this' in text:
+    if 'đọc' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         read_text(detect_text("test1.jpg"))
-    elif 'what is in front of me' in text:
+    #     todo: still english object
+    elif 'phía trước tôi có gì vậy' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         localize_objects('test1.jpg')
-    elif 'go to sleep' in text:
+    elif 'tạm biệt' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
         # When everything done, release the capture
@@ -190,24 +198,25 @@ def lisa_command(text):
         t1.join()
         print('Lisa goes to sleep Zzz...')
         sys.exit(0)
-    elif 'play the song' in text:
+    elif 'mở bài hát' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
         # Thread to stop the web parsing when say "go to sleep"
         # Thread(target=web_parsing, args=[text.replace("play the song", "")]).start()
-        Thread(target=web_parsing, args=[text.rpartition('play the song')[2]]).start()
-    elif 'play again' in text:
+        Thread(target=web_parsing, args=[text.rpartition('mở bài hát')[2]]).start()
+        # web_parsing(text.rpartition('mở bài hát')[2])
+    # elif 'play again' in text:
+    #     if (mixer.music.get_busy):
+    #         mixer.music.stop()
+    #     for topdir, dirs, files in os.walk("musics"):
+    #         play_sound('./musics/' + files[len(files) - 1])
+    # elif 'stop' in text:
+    #     mixer.music.stop()
+    elif 'tìm kiếm' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
-        for topdir, dirs, files in os.walk("musics"):
-            play_song('./musics/' + files[len(files) - 1])
-    elif 'stop' in text:
-        mixer.music.stop()
-    elif 'search for' in text:
-        if (mixer.music.get_busy):
-            mixer.music.stop()
-        Thread(target=search_wikipedia, args=[text.rpartition('search for')[2]]).start()
-    elif 'what is the weather today' in text:
+        Thread(target=search_wikipedia, args=[text.rpartition('tìm kiếm')[2]]).start()
+    elif 'thời tiết hôm nay thế nào' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
         Thread(target=weather).start()
@@ -234,7 +243,7 @@ def localize_objects(path):
         print('\n{} (confidence: {})'.format(object_.name, object_.score))
 
         if object_.score >= 0.7:
-            read_text(object_.name)
+            read_text(translate_language(object_.name))
             # print('Normalized bounding polygon vertices: ')
             # for vertex in object_.bounding_poly.normalized_vertices:
             #     print(' - ({}, {})'.format(vertex.x, vertex.y))
@@ -244,7 +253,7 @@ def localize_objects(path):
 def stream_audio():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
-    language_code = 'en-US'  # a BCP-47 language tag #
+    language_code = 'vi-VN'  # a BCP-47 language tag #
 
     client = speech.SpeechClient()
     config = types.RecognitionConfig(

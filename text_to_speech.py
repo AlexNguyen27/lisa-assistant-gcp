@@ -23,26 +23,15 @@ def play_audio(file):
 
 # for song
 def play_song(file):
-    # from pygame import mixer
-    import pygame
-    pygame.init()
+    from pygame import mixer
+    mixer.init()
 
-    # while mixer.music.get_busy():
-    #     time.Clock().tick(10)
+    while mixer.music.get_busy():
+        time.Clock().tick(10)
 
-    print(file)
-    pygame.display.set_mode((200, 100))
-    print('hrer-------------------')
     # mixer.init()
-    pygame.mixer.music.load(file)
-    print('hrer--------dsf')
-    pygame.mixer.music.play(0)
-    clock = pygame.time.Clock()
-    clock.tick(10)
-    while pygame.mixer.music.get_busy():
-        print('busy')
-        # pygame.event.poll()
-        clock.tick(10)
+    mixer.music.load(file)
+    mixer.music.play()
 
 def play_sound(file):
     try:
