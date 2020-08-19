@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1bb36040-2250-4080-b7f4-2f5c3ae0fc85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speech_to_text.py" beforeDir="false" afterPath="$PROJECT_DIR$/speech_to_text.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/musics/song.webm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web_parsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_parsing.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +212,7 @@
       <workItem from="1597748926428" duration="2110000" />
       <workItem from="1597756273338" duration="11004000" />
       <workItem from="1597798035895" duration="13974000" />
-      <workItem from="1597822294237" duration="378000" />
+      <workItem from="1597822294237" duration="890000" />
     </task>
     <servers />
   </component>
@@ -281,11 +281,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/speech_to_text.py</url>
-          <line>193</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test.py</url>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -299,7 +294,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$web_parsing.coverage" NAME="web_parsing Coverage Results" MODIFIED="1597815346623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$speech_to_text.coverage" NAME="speech_to_text Coverage Results" MODIFIED="1597818074821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$speech_to_text.coverage" NAME="speech_to_text Coverage Results" MODIFIED="1597822935643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$text_to_speech.coverage" NAME="text_to_speech Coverage Results" MODIFIED="1597475025542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$web_parsing.coverage" NAME="web_parsing Coverage Results" MODIFIED="1597475190266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$search_wikipedia.coverage" NAME="search_wikipedia Coverage Results" MODIFIED="1597241169569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

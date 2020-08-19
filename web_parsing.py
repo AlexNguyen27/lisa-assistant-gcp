@@ -16,6 +16,7 @@ def web_parsing(textToSearch):
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.get("https://www.youtube.com/results?search_query="+query)
         videos = driver.find_elements_by_xpath('//*[@id="video-title"]')
+        read_text("Searching for " + textToSearch)
         if len(videos):
             linkHref = videos[0].get_attribute('href')
             driver.quit()
