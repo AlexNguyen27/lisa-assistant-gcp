@@ -1,17 +1,9 @@
 from urllib.parse import quote
 from youtube import get_youtube_manager
-from text_to_speech import play_sound
 from text_to_speech import  play_song
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-import winsound
-import pygame
-import time
-import multiprocessing
-from threading import Thread
-from pytube import YouTube
-from pytube import Playlist
-# Read 3 first top song, cuz download take long time
+
 def message(videos):
     msg = "I found " + str(len(videos)) + " songs, "
     for index, video in enumerate(videos):
@@ -20,7 +12,6 @@ def message(videos):
 
 def web_parsing(textToSearch):
     try:
-
         query = quote(textToSearch)
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.get("https://www.youtube.com/results?search_query="+query)

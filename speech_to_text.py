@@ -2,14 +2,9 @@ from __future__ import division
 import re
 import sys
 import os
-from bs4 import BeautifulSoup as bs
 
-from youtube import get_youtube_manager
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
-
-from requests_html import HTMLSession
-import asyncio
 
 from pygame import mixer
 
@@ -22,7 +17,6 @@ from threading import Thread
 from six.moves import queue
 from vision import detect_text
 from text_to_speech import read_text
-from text_to_speech import play_sound
 from text_to_speech import play_song
 from web_parsing import web_parsing
 from search_wikipedia import search_wikipedia
@@ -156,9 +150,9 @@ def listen_print_loop(responses):
             print(transcript + overwrite_chars)
             text = (transcript + overwrite_chars).lower().strip()
             global call_lisa
-            if (text == 'hey lisa') or (text == 'hi lisa') or (text == 'hi') or (text == 'xin chào'):
+            if (text == 'hey lisa') or (text == 'hi lisa') or (text == 'lisa'):
                 call_lisa = True
-                read_text("Chủ nhân ơi, cần tôi giúp gì không?")
+                read_text("Hi, how can I help you ?")
             elif call_lisa:
                 lisa_command(text)
 
@@ -178,11 +172,11 @@ call_lisa = False
 # Lisa command
 def lisa_command(text):
     global mixer
-    if 'Cho tôi nhìn đoạn văn bản cần nói' in text:
+    if 'can you read this' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         read_text(detect_text("test1.jpg"))
-    elif 'ok' in text:
+    elif 'what is in front of me' in text:
         ret, frame = cap.read()
         cv2.imwrite("test1.jpg", frame)
         localize_objects('test1.jpg')
@@ -199,8 +193,9 @@ def lisa_command(text):
     elif 'play the song' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
-        Thread(target=web_parsing, args=[text.rpartition('play the song')[2]],).start()
-
+        # Thread to stop the web parsing when say "go to sleep"
+        # Thread(target=web_parsing, args=[text.replace("play the song", "")]).start()
+        Thread(target=web_parsing, args=[text.rpartition('play the song')[2]]).start()
     elif 'play again' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
@@ -249,7 +244,7 @@ def localize_objects(path):
 def stream_audio():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
-    language_code = 'vi-VN'  # a BCP-47 language tag #
+    language_code = 'en-US'  # a BCP-47 language tag #
 
     client = speech.SpeechClient()
     config = types.RecognitionConfig(
@@ -274,7 +269,6 @@ def stream_audio():
 # Main function
 if __name__ == '__main__':
     stop_threads = False
-    asyncio.set_event_loop(asyncio.new_event_loop())
     t1 = Thread(target=camera)
     t1.start()
     t2 = Thread(target=stream_audio)
