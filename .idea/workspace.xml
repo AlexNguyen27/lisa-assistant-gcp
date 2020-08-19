@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1bb36040-2250-4080-b7f4-2f5c3ae0fc85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/musics/song.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web_parsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/web_parsing.py" afterDir="false" />
-    </list>
+    <list default="true" id="1bb36040-2250-4080-b7f4-2f5c3ae0fc85" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -212,7 +208,7 @@
       <workItem from="1597748926428" duration="2110000" />
       <workItem from="1597756273338" duration="11004000" />
       <workItem from="1597798035895" duration="13974000" />
-      <workItem from="1597822294237" duration="890000" />
+      <workItem from="1597822294237" duration="1733000" />
     </task>
     <servers />
   </component>
@@ -240,22 +236,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597247468738" />
-    <state width="1493" height="287" key="GridCell.Tab.0.bottom" timestamp="1597818074832">
+    <state width="1493" height="287" key="GridCell.Tab.0.bottom" timestamp="1597823199342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="287" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597818074832" />
-    <state width="1493" height="287" key="GridCell.Tab.0.center" timestamp="1597818074832">
+    <state width="1493" height="287" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597823199342" />
+    <state width="1493" height="287" key="GridCell.Tab.0.center" timestamp="1597823199342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="287" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597818074832" />
-    <state width="1493" height="287" key="GridCell.Tab.0.left" timestamp="1597818074831">
+    <state width="1493" height="287" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597823199342" />
+    <state width="1493" height="287" key="GridCell.Tab.0.left" timestamp="1597823199341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="287" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597818074831" />
-    <state width="1493" height="287" key="GridCell.Tab.0.right" timestamp="1597818074832">
+    <state width="1493" height="287" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597823199341" />
+    <state width="1493" height="287" key="GridCell.Tab.0.right" timestamp="1597823199342">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="287" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597818074832" />
+    <state width="1493" height="287" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597823199342" />
     <state width="1493" height="253" key="GridCell.Tab.1.bottom" timestamp="1597812496754">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -294,7 +290,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$web_parsing.coverage" NAME="web_parsing Coverage Results" MODIFIED="1597815346623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$speech_to_text.coverage" NAME="speech_to_text Coverage Results" MODIFIED="1597822935643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lisa_assistant_GCP$speech_to_text.coverage" NAME="speech_to_text Coverage Results" MODIFIED="1597823199277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$text_to_speech.coverage" NAME="text_to_speech Coverage Results" MODIFIED="1597475025542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$web_parsing.coverage" NAME="web_parsing Coverage Results" MODIFIED="1597475190266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Project_PTIT_2020_Python_Alex$search_wikipedia.coverage" NAME="search_wikipedia Coverage Results" MODIFIED="1597241169569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
