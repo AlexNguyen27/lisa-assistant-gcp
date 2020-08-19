@@ -2,9 +2,14 @@ from __future__ import division
 import re
 import sys
 import os
+from bs4 import BeautifulSoup as bs
 
+from youtube import get_youtube_manager
 credential_path = 'apikey.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+
+from requests_html import HTMLSession
+import asyncio
 
 from pygame import mixer
 
@@ -191,17 +196,16 @@ def lisa_command(text):
         t1.join()
         print('Lisa goes to sleep Zzz...')
         sys.exit(0)
-    elif 'mở nhạc' in text:
+    elif 'play the song' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
-        # Thread to stop the web parsing when say "go to sleep"
-        # Thread(target=web_parsing, args=[text.replace("play the song", "")]).start()
-        Thread(target=web_parsing, args=[text.rpartition('play the song')[2]]).start()
+        Thread(target=web_parsing, args=[text.rpartition('play the song')[2]],).start()
+
     elif 'play again' in text:
         if (mixer.music.get_busy):
             mixer.music.stop()
         for topdir, dirs, files in os.walk("musics"):
-            play_sound('./musics/' + files[len(files) - 1])
+            play_song('./musics/' + files[len(files) - 1])
     elif 'stop' in text:
         mixer.music.stop()
     elif 'search for' in text:
@@ -270,6 +274,7 @@ def stream_audio():
 # Main function
 if __name__ == '__main__':
     stop_threads = False
+    asyncio.set_event_loop(asyncio.new_event_loop())
     t1 = Thread(target=camera)
     t1.start()
     t2 = Thread(target=stream_audio)
